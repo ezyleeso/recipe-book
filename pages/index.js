@@ -1,10 +1,5 @@
-import styles from "@/styles/Home.module.css";
-import Link from "next/link";
+import Description from "@/components/Description";
 
 export default function Home() {
-  return (
-    <>
-      <h1>홈 입니다만...</h1>
-    </>
-  );
+  return <Description>홈 입니다만...</Description>;
 }

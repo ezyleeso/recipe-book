@@ -1,1 +1,146 @@
-/* @import url("./reset.css"); */
+@import url("./reset.css");
+
+@font-face {
+  font-family: "DOSSaemmul";
+  src: url("../fonts/DOSSaemmul.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+html {
+  font-size: 10px;
+}
+
+body {
+  color: #000;
+  font: 400 1.6rem/1.5 "DOSSaemmul", sans-serif;
+  background: #b4e6fd url("../images/bg-cloud.png") center repeat;
+}
+
+::-webkit-scrollbar {
+  width: 17px;
+}
+::-webkit-scrollbar-thumb {
+  border: 2px solid #e5f3ff;
+  border-radius: 4px;
+  background: linear-gradient(0.25turn, #bac9fb, #d6ebff, #bac9fb 90%, #bdc5ce);
+  box-shadow: inset -1px -1px #bdc5ce;
+}
+::-webkit-scrollbar-thumb:active {
+  background: linear-gradient(0.25turn, #bac9fb, #bac9fb, #bac9fb 90%, #bdc5ce);
+}
+::-webkit-scrollbar-track {
+  border: 0 solid #edeeec;
+  border-left-width: 1px;
+  border-right-width: 1px;
+  background: linear-gradient(to right, #f1f1ef, #fff);
+}
+
+@keyframes colors {
+  15% {
+    color: red;
+  }
+  30% {
+    color: orange;
+  }
+  45% {
+    color: yellow;
+  }
+  60% {
+    color: green;
+  }
+  75% {
+    color: blue;
+  }
+  90% {
+    color: navy;
+  }
+  100% {
+    color: violet;
+  }
+}
+
+.main {
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  padding: 4rem;
+  gap: 8rem;
+}
+
+.nav {
+  flex: 0 0 300px;
+  overflow-y: scroll;
+}
+
+.nav .title {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 2rem 3rem;
+  margin-bottom: 3rem;
+  border-radius: 10rem;
+  border: 4px dotted skyblue;
+  background-color: rgba(255, 255, 255, 0.8);
+  font-size: 3rem;
+  animation: colors 7s linear infinite alternate;
+}
+
+.nav .menus {
+  padding: 0 3rem 3rem;
+}
+
+.nav .menus li {
+  margin-bottom: 2rem;
+}
+
+.nav .menus a {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  font-size: 2rem;
+}
+
+.nav .menus a:hover,
+.nav .menus a.is-active {
+  animation: colors 7s linear infinite alternate;
+  text-decoration: underline;
+}
+
+.article {
+  position: relative;
+  flex: 0 1 800px;
+  overflow-y: scroll;
+  border: 4px solid #8eef97;
+  background-color: #fdfdfd;
+  box-shadow: 1rem 1rem 1rem #8eef97;
+}
+
+.article .container {
+  display: flex;
+  min-height: 100%;
+  gap: 3rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.article .container .desc {
+  font-size: 2rem;
+}
+
+@media (max-width: 800px) {
+  html {
+    font-size: 8px;
+  }
+
+  .main {
+    flex-direction: column;
+  }
+
+  .nav {
+    flex-basis: 30%;
+  }
+}

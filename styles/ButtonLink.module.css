@@ -1,0 +1,73 @@
+.button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 12rem;
+  padding: 1rem;
+  border-radius: 3rem;
+  color: #fff;
+  font-size: 1.6rem;
+  text-shadow: #3d79be 1px 2px 2px;
+  text-align: center;
+  overflow: hidden;
+  border: 2px solid #447dbc;
+  background-color: #3c83c6;
+  background-image: -webkit-gradient(
+    linear,
+    0% 0%,
+    0% 90%,
+    from(#1b5a9b),
+    to(#6cbfff)
+  );
+  box-shadow: rgba(66, 140, 240, 0.4) 0px 10px 16px;
+  cursor: pointer;
+  outline: none;
+}
+
+.button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 5px;
+  border-radius: 0.8rem;
+  height: 1px;
+  width: 10.5rem;
+  padding: 0.8rem 0;
+  background-color: rgba(255, 255, 255, 0.2);
+  background-image: -webkit-gradient(
+    linear,
+    0% 0%,
+    0% 95%,
+    from(rgba(255, 255, 255, 0.7)),
+    to(rgba(255, 255, 255, 0))
+  );
+}
+
+.button:hover {
+  text-shadow: #3d79be 1px 2px 2px;
+  background-color: #3c83c6;
+  background-image: -webkit-gradient(
+    linear,
+    0% 0%,
+    0% 90%,
+    from(#165698),
+    to(#7ec7ff)
+  );
+  border: 2px solid #366dab;
+  box-shadow: rgba(66, 140, 240, 0.6) 0px 10px 20px;
+}
+
+.button:active {
+  text-shadow: #3d79be 1px 2px 2px;
+  background-color: #3c83c6;
+  background-image: -webkit-gradient(
+    linear,
+    0% 0%,
+    0% 90%,
+    from(#1b5a9b),
+    to(#52abef)
+  );
+  border: 2px solid #447dbc;
+  box-shadow: rgba(66, 140, 240, 0.4) 0px 10px 16px;
+}

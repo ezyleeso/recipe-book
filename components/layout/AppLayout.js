@@ -1,10 +1,12 @@
 import Head from "next/head";
-import Cursor from "../Cursor";
 import Link from "next/link";
+import AxiosInterceptor from "./AxiosInterceptor";
+import Menus from "./Menus";
+import Cursor from "../Cursor";
 
 export default function AppLayout({ children }) {
   return (
-    <>
+    <AxiosInterceptor>
       <Head>
         <title>(o´ω`o)ﾉ Recipe Book</title>
         <meta
@@ -14,15 +16,19 @@ export default function AppLayout({ children }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main>
+      <main className="main">
         <nav className="nav">
-          <h1>
-            <Link href="/">Home으로</Link> | <Link href="/posts">Posts</Link>
+          <h1 className="title">
+            {/* <Link href="/">소다미의 레시피 북 ~ ♥</Link> */}
+            <Link href="/">Home</Link>
           </h1>
+          <Menus />
         </nav>
-        <article>{children}</article>
+        <article className="article">
+          <div className="container">{children}</div>
+        </article>
       </main>
       <Cursor />
-    </>
+    </AxiosInterceptor>
   );
 }

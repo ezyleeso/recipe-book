@@ -1,0 +1,19 @@
+.container {
+  position: relative;
+  min-height: 100%;
+  padding: 4rem;
+}
+
+.title {
+  font-size: 4rem;
+  margin-bottom: 1em;
+}
+
+.content {
+  line-height: 2;
+}
+
+.content h3 {
+  font-size: 2rem;
+  margin-bottom: 1em;
+}

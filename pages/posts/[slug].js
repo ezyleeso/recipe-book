@@ -1,66 +1,34 @@
-import fs from "fs";
-import path from "path";
-import matter from "gray-matter";
-import { unified } from "unified";
-import remarkParse from "remark-parse";
-import remarkHtml from "remark-html";
+import axios from "@/lib/axios";
+import { useRouter } from "next/router";
+import { useCallback, useEffect, useState } from "react";
+import styles from "@/styles/Posts.module.css";
 
-export default function Post({ post }) {
-  return (
-    <div>
-      <h1>{post.frontmatter.title}</h1>
-      <p>{post.frontmatter.date}</p>
-      <div dangerouslySetInnerHTML={{ __html: post.contentHtml }} />
-    </div>
+export default function Post() {
+  const router = useRouter();
+  const { slug } = router.query;
+
+  const [post, setPost] = useState({});
+
+  const fetchPost = useCallback(
+    () => axios({ url: `/api/posts/${slug}`, method: "get" }),
+    [slug]
   );
-}
 
-export async function getStaticPaths() {
-  const postsDirectory = path.join(process.cwd(), "posts");
-  const filenames = fs.readdirSync(postsDirectory);
+  useEffect(() => {
+    fetchPost().then(({ data }) => setPost(data));
+  }, [fetchPost]);
 
-  const paths = filenames.map((filename) => ({
-    params: {
-      slug: filename.replace(".md", ""),
-    },
-  }));
+  if (!post) return null;
 
-  return {
-    paths,
-    fallback: false,
-  };
-}
-
-export async function getStaticProps({ params }) {
-  const { slug } = params;
-  const filePath = path.join(process.cwd(), "posts", `${slug}.md`);
-
-  try {
-    // 마크다운 파일이 있는지 확인
-    fs.accessSync(filePath, fs.constants.F_OK);
-
-    // 파일이 존재하면 읽어들이고 처리
-    const fileContent = fs.readFileSync(filePath, "utf-8");
-    const { data, content } = matter(fileContent);
-
-    const processedContent = await unified()
-      .use(remarkParse)
-      .use(remarkHtml)
-      .process(content);
-    const contentHtml = processedContent.toString();
-
-    return {
-      props: {
-        post: {
-          frontmatter: data,
-          contentHtml,
-        },
-      },
-    };
-  } catch (err) {
-    // 파일이 없을 경우, 404 페이지를 반환
-    return {
-      notFound: true,
-    };
-  }
+  return (
+    <>
+      <div className={styles.container}>
+        <h2 className={styles.title}>{post.title}</h2>
+        <div
+          className={styles.content}
+          dangerouslySetInnerHTML={{ __html: post.contentHtml }}
+        ></div>
+      </div>
+    </>
+  );
 }
