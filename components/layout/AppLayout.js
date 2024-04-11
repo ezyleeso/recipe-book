@@ -14,7 +14,12 @@ export default function AppLayout({ children }) {
           content="레시피 북에 방문해 주신 여러분, 환영합니다!"
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="og:image" content="/og_image.jpg" />
+        <meta property="og:title" content="(o´ω`o)ﾉ Recipe Book" />
+        <meta
+          property="og:descrption"
+          content="레시피 북에 방문해 주신 여러분, 환영합니다!"
+        />
+        <meta property="og:image" content="/og_image.jpg" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="main">
