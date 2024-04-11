@@ -14,13 +14,13 @@ export default function AppLayout({ children }) {
           content="레시피 북에 방문해 주신 여러분, 환영합니다!"
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="og:image" content="/og_image.jpg" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="main">
         <nav className="nav">
           <h1 className="title">
-            {/* <Link href="/">소다미의 레시피 북 ~ ♥</Link> */}
-            <Link href="/">Home</Link>
+            <Link href="/">소다미의 레시피 북 ~ ♥</Link>
           </h1>
           <Menus />
         </nav>
